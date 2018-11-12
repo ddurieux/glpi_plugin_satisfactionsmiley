@@ -41,7 +41,7 @@ class PluginSatisfactionsmileyNotificationTargetTicketsatisfaction extends Notif
          $links .= "<a href='".urldecode($CFG_GLPI["url_base"].
                "/plugins/satisfactionsmiley/front/ticketsatisfaction.answer.php?tickets_id=".$options['item']->fields['tickets_id'].
                "&token=".$options['item']->fields['token']."&note=".$i)."' "
-               . "target='_blank'><img src='".$psConfig->fields['smiley_'.$i]."'></a>";
+               . "target='_blank'><img src='https://servicedesk.celine.net/plugins/satisfactionsmiley/front/img.php?img=smiley_".$i."'></a>&nbsp;";
       }
       $this->data['##satisfactionsmiley.smileys##'] = $links;
    }
