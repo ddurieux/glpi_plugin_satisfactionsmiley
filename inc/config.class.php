@@ -25,7 +25,7 @@ class PluginSatisfactionsmileyConfig extends CommonDBTM {
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Smiley very happy', 'satisfactionsmiley')."</td>";
+      echo "<td>".__('Smiley very bad', 'satisfactionsmiley')."</td>";
       echo "<td><img src='".$this->fields['smiley_1']."'></td>";
       echo "<td colspan='2'>";
       Html::file(['name' => 'smiley_1', 'display' => true, 'onlyimages' => true]);
@@ -33,7 +33,7 @@ class PluginSatisfactionsmileyConfig extends CommonDBTM {
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Smiley happy', 'satisfactionsmiley')."</td>";
+      echo "<td>".__('Smiley bad', 'satisfactionsmiley')."</td>";
       echo "<td><img src='".$this->fields['smiley_2']."'></td>";
       echo "<td colspan='2'>";
       Html::file(['name' => 'smiley_2', 'display' => true, 'onlyimages' => true]);
@@ -49,7 +49,7 @@ class PluginSatisfactionsmileyConfig extends CommonDBTM {
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Smiley bad', 'satisfactionsmiley')."</td>";
+      echo "<td>".__('Smiley happy', 'satisfactionsmiley')."</td>";
       echo "<td><img src='".$this->fields['smiley_4']."'></td>";
       echo "<td colspan='2'>";
       Html::file(['name' => 'smiley_4', 'display' => true, 'onlyimages' => true]);
@@ -57,7 +57,7 @@ class PluginSatisfactionsmileyConfig extends CommonDBTM {
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Smiley very bad', 'satisfactionsmiley')."</td>";
+      echo "<td>".__('Smiley very happy', 'satisfactionsmiley')."</td>";
       echo "<td><img src='".$this->fields['smiley_5']."'></td>";
       echo "<td colspan='2'>";
       Html::file(['name' => 'smiley_5', 'display' => true, 'onlyimages' => true]);

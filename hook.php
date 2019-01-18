@@ -75,11 +75,11 @@ function plugin_satisfactionsmiley_install() {
    if (!$DB->tableExists('glpi_plugin_satisfactionsmiley_configs')) {
       $query = "CREATE TABLE `glpi_plugin_satisfactionsmiley_configs` (
          `id` int(11) NOT NULL AUTO_INCREMENT,
-         `smiley_1` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'very happy',
-         `smiley_2` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'happy',
+         `smiley_1` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'very bad',
+         `smiley_2` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'bad',
          `smiley_3` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'good',
-         `smiley_4` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'bad',
-         `smiley_5` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'very bad',
+         `smiley_4` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'happy',
+         `smiley_5` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'very happy',
          PRIMARY KEY (`id`)
       ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
       $DB->query($query);
