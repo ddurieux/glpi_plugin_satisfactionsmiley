@@ -27,17 +27,14 @@ function plugin_init_satisfactionsmiley() {
    }
 
    if ($Plugin->isActivated('satisfactionsmiley')) { // check if plugin is active
-      if (Session::getLoginUserID()) {
-         Plugin::registerClass('PluginSatisfactionsmileyConfig');
-         Plugin::registerClass('PluginSatisfactionsmileyTicketsatisfaction',
-                        array('notificationtemplates_types' => true));
-         Plugin::registerClass('PluginSatisfactionsmileyNotificationTargetTicketsatisfaction');
+      Plugin::registerClass('PluginSatisfactionsmileyConfig');
+      Plugin::registerClass('PluginSatisfactionsmileyTicketsatisfaction',
+                     array('notificationtemplates_types' => true));
+      Plugin::registerClass('PluginSatisfactionsmileyNotificationTargetTicketsatisfaction');
 
-         $PLUGIN_HOOKS['item_add']['satisfactionsmiley'] = [
-            'TicketSatisfaction' => ['PluginSatisfactionsmileyTicketsatisfaction' => 'generateSatisfaction'],
-          ];
-
-      }
+      $PLUGIN_HOOKS['item_add']['satisfactionsmiley'] = [
+         'TicketSatisfaction' => 'plugin_satisfactionsmiley_satisfactionInternal',
+       ];
    }
 }
 
@@ -76,8 +73,8 @@ function plugin_satisfactionsmiley_check_prerequisites() {
 
    $version = rtrim(GLPI_VERSION, '-dev');
    if (version_compare($version, '9.3', 'lt')) {
-      echo "This plugin requires GLPI 9.2";
-      return false;
+      //echo "This plugin requires GLPI 9.2";
+      //return false;
    }
 
    if (!isset($_SESSION['glpi_plugins'])) {

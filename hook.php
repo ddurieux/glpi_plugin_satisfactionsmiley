@@ -117,3 +117,13 @@ function plugin_satisfactionsmiley_uninstall() {
    return true;
 }
 
+
+function plugin_satisfactionsmiley_satisfactionInternal(TicketSatisfaction $ticketSatisfaction) {
+   $ticketSatisfaction->update([
+      'id'            => $ticketSatisfaction->fields['id'],
+      'tickets_id'    => $ticketSatisfaction->fields['tickets_id'],
+      'satisfaction'  => 3,
+      'date_answered' => $_SESSION["glpi_currenttime"]
+   ]);
+}
+
