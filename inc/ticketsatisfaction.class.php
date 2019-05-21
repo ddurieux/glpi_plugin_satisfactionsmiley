@@ -34,6 +34,15 @@ class PluginSatisfactionsmileyTicketsatisfaction extends CommonDBTM {
          'name' => __('Satisfaction smileys', 'satisfactionsmiley')
       ];
 
+
+      $tab[] = [
+         'id'        => '2',
+         'table'     => $this->getTable(),
+         'field'     => 'satisfaction',
+         'name'      => __('Satisfaction', 'satisfactionsmiley'),
+         'datatype'  => 'number',
+      ];
+
       $tab[] = [
          'id'        => '3',
          'table'     => $this->getTable(),
@@ -41,6 +50,51 @@ class PluginSatisfactionsmileyTicketsatisfaction extends CommonDBTM {
          'name'      => __('User called', 'satisfactionsmiley'),
          'datatype'  => 'bool',
       ];
+
+      $tab[] = [
+         'id'        => '4',
+         'table'     => $this->getTable(),
+         'field'     => 'date_answered',
+         'name'      => __('Answer date', 'satisfactionsmiley'),
+         'datatype'  => 'datetime',
+      ];
+
+      $tab[] = [
+         'id'        => '5',
+         'table'     => 'glpi_tickets',
+         'field'     => 'closedate',
+         'name'      => __('Ticket close date', 'satisfactionsmiley'),
+         'datatype'  => 'datetime',
+      ];
+
+      $tab[] = [
+         'id'        => '6',
+         'table'     => 'glpi_tickets',
+         'field'     => 'id',
+         'name'      => __('Ticket id', 'satisfactionsmiley'),
+         'datatype'  => 'itemlink',
+      ];
+
+      $tab[] = [
+         'id'        => '7',
+         'table'     => 'glpi_tickets',
+         'field'     => 'name',
+         'name'      => __('Ticket title', 'satisfactionsmiley'),
+      ];
+
+      $tab[] = [
+         'id'         => '8',
+         'table'      => 'glpi_entities',
+         'field'      => 'name',
+         'name'       => __('Entity'),
+         'datatype'   => 'dropdown',
+         'joinparams' => [
+            'beforejoin' => [
+               'table' => 'glpi_tickets'
+            ]
+         ]
+      ];
+
       return $tab;
    }
 

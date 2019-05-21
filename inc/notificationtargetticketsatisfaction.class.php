@@ -3,10 +3,13 @@
 class PluginSatisfactionsmileyNotificationTargetTicketsatisfaction extends NotificationTargetTicket {
 
    function __construct($entity = '', $event = '', $object = null, $options = []) {
-
-      $ticket = new Ticket();
-      $ticket->getFromDB($options['tickets_id']);
-      parent::__construct($entity, $event, $ticket, $options);
+      if (isset($options['tickets_id'])) {
+         $ticket = new Ticket();
+         $ticket->getFromDB($options['tickets_id']);
+         parent::__construct($entity, $event, $ticket, $options);
+      } else {
+         parent::__construct($entity, $event, null, $options);
+      }
    }
 
    /**
@@ -71,5 +74,9 @@ class PluginSatisfactionsmileyNotificationTargetTicketsatisfaction extends Notif
       asort($this->tag_descriptions);
    }
 
+
+   function validateSendTo($event, array $infos, $notify_me = false) {
+      return true;
+   }
 
 }
