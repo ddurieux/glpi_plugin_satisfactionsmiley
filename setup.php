@@ -1,6 +1,6 @@
 <?php
 
-define ("PLUGIN_SATISFACTIONSMILEY_VERSION", "9.2+1.0");
+define ("PLUGIN_SATISFACTIONSMILEY_VERSION", "9.4+1.0");
 
 include_once(GLPI_ROOT."/inc/includes.php");
 
@@ -47,15 +47,15 @@ function plugin_init_satisfactionsmiley() {
 function plugin_version_satisfactionsmiley() {
    return ['name'           => 'SatisfactionSmiley',
            'shortname'      => 'satisfactionsmiley',
-           'version'        => "9.2+1.0",
+           'version'        => PLUGIN_SATISFACTIONSMILEY_VERSION,
            'license'        => 'AGPLv3+',
            'author'         => '<a href="mailto:david@durieux.family">David DURIEUX</a>',
            'homepage'       => 'https://github.com/',
            'requirements'   => [
               'glpi' => [
-                 'min' => '9.2',
-                  'max' => '9.4',
-                  'dev' => '9.2+1.0' == 0
+                 'min' => '9.4',
+                  'max' => '9.5',
+                  'dev' => '9.4+1.0' == 0
                ],
             ]
          ];
@@ -72,8 +72,8 @@ function plugin_satisfactionsmiley_check_prerequisites() {
    global $DB;
 
    $version = rtrim(GLPI_VERSION, '-dev');
-   if (version_compare($version, '9.3', 'lt')) {
-      //echo "This plugin requires GLPI 9.2";
+   if (version_compare($version, '9.4', 'lt')) {
+      //echo "This plugin requires GLPI 9.4";
       //return false;
    }
 
@@ -81,13 +81,13 @@ function plugin_satisfactionsmiley_check_prerequisites() {
       $_SESSION['glpi_plugins'] = [];
    }
 
-   if (version_compare(GLPI_VERSION, '9.2-dev', '!=')
-      && version_compare(GLPI_VERSION, '9.2', 'lt')
-      || version_compare(GLPI_VERSION, '9.4', 'ge')) {
+   if (version_compare(GLPI_VERSION, '9.4-dev', '!=')
+      && version_compare(GLPI_VERSION, '9.4', 'lt')
+      || version_compare(GLPI_VERSION, '9.5', 'ge')) {
       if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '9.2', '9.4');
+         echo Plugin::messageIncompatible('core', '9.4', '9.5');
       } else {
-         echo __('Your GLPI version not compatible, require >= 9.2 and < 9.3', 'satisfactionsmiley');
+         echo __('Your GLPI version not compatible, require >= 9.4 and < 9.5', 'satisfactionsmiley');
       }
       return false;
    }
