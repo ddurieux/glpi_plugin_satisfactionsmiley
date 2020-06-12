@@ -28,6 +28,62 @@ if (isset($_POST['_smiley_1'])) {
    Html::back();
 }
 
+if (isset($_POST['_smiley_2'])) {
+   $fullpath = GLPI_TMP_DIR . "/" . $_POST['_smiley_2'][0];
+   $img = file_get_contents($fullpath);
+   $imgdata = base64_encode($img);
+
+   $input = [
+      'id' => 1,
+      'smiley_2' => "data:image/x-icon;base64," . $imgdata
+   ];
+
+   $psConfig->update($input);
+   Html::back();
+}
+
+if (isset($_POST['_smiley_3'])) {
+   $fullpath = GLPI_TMP_DIR . "/" . $_POST['_smiley_3'][0];
+   $img = file_get_contents($fullpath);
+   $imgdata = base64_encode($img);
+
+   $input = [
+      'id' => 1,
+      'smiley_3' => "data:image/x-icon;base64," . $imgdata
+   ];
+
+   $psConfig->update($input);
+   Html::back();
+}
+
+if (isset($_POST['_smiley_4'])) {
+   $fullpath = GLPI_TMP_DIR . "/" . $_POST['_smiley_4'][0];
+   $img = file_get_contents($fullpath);
+   $imgdata = base64_encode($img);
+
+   $input = [
+      'id' => 1,
+      'smiley_4' => "data:image/x-icon;base64," . $imgdata
+   ];
+
+   $psConfig->update($input);
+   Html::back();
+}
+
+if (isset($_POST['_smiley_5'])) {
+   $fullpath = GLPI_TMP_DIR . "/" . $_POST['_smiley_5'][0];
+   $img = file_get_contents($fullpath);
+   $imgdata = base64_encode($img);
+
+   $input = [
+      'id' => 1,
+      'smiley_5' => "data:image/x-icon;base64," . $imgdata
+   ];
+
+   $psConfig->update($input);
+   Html::back();
+}
+
 if (isset($_POST['check_list'])) {
    $input2 = [
       'id' => 1,

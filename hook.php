@@ -12,7 +12,7 @@ function plugin_satisfactionsmiley_getAddSearchOptions($itemtype) {
    if ($itemtype == "Ticket") {
       $sopt[19001]['table']     = 'glpi_plugin_satisfactionsmiley_ticketsatisfactions';
       $sopt[19001]['field']     = 'satisfaction';
-      $sopt[19001]['linkfield'] = 'id';
+//      $sopt[19001]['linkfield'] = 'id';
       $sopt[19001]['name']      = __('Satisfaction Smileys', 'satisfactionsmiley');
       $sopt[19001]['datatype']  = 'text';
       $sopt[19001]['joinparams']  = ['jointype' => 'child'];
