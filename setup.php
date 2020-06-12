@@ -1,6 +1,6 @@
 <?php
 
-define ("PLUGIN_SATISFACTIONSMILEY_VERSION", "9.4+1.0");
+define ("PLUGIN_SATISFACTIONSMILEY_VERSION", "9.4+1.1");
 
 include_once(GLPI_ROOT."/inc/includes.php");
 

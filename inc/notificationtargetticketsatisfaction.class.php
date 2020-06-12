@@ -41,14 +41,27 @@ class PluginSatisfactionsmileyNotificationTargetTicketsatisfaction extends Notif
       $psConfig->getFromDB(1);
 
       $links = "";
-      for ($i=1; $i <= 5; $i++) {
-         if($psConfig->fields['is_active_'. $i]) {
-            $links .= "<a href='".urldecode($CFG_GLPI["url_base"].
-               "/plugins/satisfactionsmiley/front/ticketsatisfaction.answer.php?tickets_id=".$options['item']->fields['tickets_id'].
-               "&token=".$options['item']->fields['token']."&note=".$i)."' "
-               . "target='_blank'>";
-            $links .= "<img src='".$psConfig->fields['smiley_'.$i]."' alt='smiley ".$i."' />";
-            $links .= "</a>&nbsp;";
+      if ($psConfig->fields['displayorder'] == 'goodfirst') {
+         for ($i=5; $i >= 1; $i--) {
+            if($psConfig->fields['is_active_'. $i]) {
+               $links .= "<a href='".urldecode($CFG_GLPI["url_base"].
+                  "/plugins/satisfactionsmiley/front/ticketsatisfaction.answer.php?tickets_id=".$options['item']->fields['tickets_id'].
+                  "&token=".$options['item']->fields['token']."&note=".$i)."' "
+                  . "target='_blank'>";
+               $links .= "<img src='".$psConfig->fields['smiley_'.$i]."' alt='smiley ".$i."' />";
+               $links .= "</a>&nbsp;";
+            }
+         }
+      } else {
+         for ($i=1; $i <= 5; $i++) {
+            if($psConfig->fields['is_active_'. $i]) {
+               $links .= "<a href='".urldecode($CFG_GLPI["url_base"].
+                  "/plugins/satisfactionsmiley/front/ticketsatisfaction.answer.php?tickets_id=".$options['item']->fields['tickets_id'].
+                  "&token=".$options['item']->fields['token']."&note=".$i)."' "
+                  . "target='_blank'>";
+               $links .= "<img src='".$psConfig->fields['smiley_'.$i]."' alt='smiley ".$i."' />";
+               $links .= "</a>&nbsp;";
+            }
          }
       }
       $this->data['##satisfactionsmiley.smileys##'] = $links;

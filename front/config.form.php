@@ -21,7 +21,8 @@ if (isset($_POST['_smiley_1'])) {
 
    $input = [
       'id' => 1,
-      'smiley_1' => "data:image/x-icon;base64," . $imgdata
+      'smiley_1' => "data:image/x-icon;base64," . $imgdata,
+      'displayorder' => $_POST['displayorder']
    ];
 
    $psConfig->update($input);
@@ -35,7 +36,8 @@ if (isset($_POST['_smiley_2'])) {
 
    $input = [
       'id' => 1,
-      'smiley_2' => "data:image/x-icon;base64," . $imgdata
+      'smiley_2' => "data:image/x-icon;base64," . $imgdata,
+      'displayorder' => $_POST['displayorder']
    ];
 
    $psConfig->update($input);
@@ -49,7 +51,8 @@ if (isset($_POST['_smiley_3'])) {
 
    $input = [
       'id' => 1,
-      'smiley_3' => "data:image/x-icon;base64," . $imgdata
+      'smiley_3' => "data:image/x-icon;base64," . $imgdata,
+      'displayorder' => $_POST['displayorder']
    ];
 
    $psConfig->update($input);
@@ -63,7 +66,8 @@ if (isset($_POST['_smiley_4'])) {
 
    $input = [
       'id' => 1,
-      'smiley_4' => "data:image/x-icon;base64," . $imgdata
+      'smiley_4' => "data:image/x-icon;base64," . $imgdata,
+      'displayorder' => $_POST['displayorder']
    ];
 
    $psConfig->update($input);
@@ -77,7 +81,8 @@ if (isset($_POST['_smiley_5'])) {
 
    $input = [
       'id' => 1,
-      'smiley_5' => "data:image/x-icon;base64," . $imgdata
+      'smiley_5' => "data:image/x-icon;base64," . $imgdata,
+      'displayorder' => $_POST['displayorder']
    ];
 
    $psConfig->update($input);
@@ -92,14 +97,22 @@ if (isset($_POST['check_list'])) {
       'is_active_3' => 0,
       'is_active_4' => 0,
       'is_active_5' => 0,
-
+      'displayorder' => $_POST['displayorder']
    ];
    foreach ($_POST['check_list'] as $selected) {
       $input2["is_active_".$selected] = 1;
    }
    $psConfig->update($input2);
-
+   Html::back();
 } 
+
+if (isset($_POST['displayorder'])) {
+   $psConfig->update([
+      'id' => 1,
+      'displayorder' => $_POST['displayorder']
+   ]);
+   Html::back();
+}
 
 
 $psConfig->display([

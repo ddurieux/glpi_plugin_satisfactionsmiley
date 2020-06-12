@@ -116,6 +116,11 @@ function plugin_satisfactionsmiley_install() {
          ADD `is_active_5` tinyint(1) NOT NULL DEFAULT '1' AFTER `is_active_4` ";
       $DB->queryOrDie($query);
    }
+   if (!$DB->fieldExists('glpi_plugin_satisfactionsmiley_configs', 'displayorder')) {
+      $query = "ALTER TABLE `glpi_plugin_satisfactionsmiley_configs`
+         ADD `displayorder` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'badfirst' AFTER `is_active_5` ";
+      $DB->queryOrDie($query);
+   }
    CronTask::Register(
       'PluginSatisfactionsmileyTicketsatisfaction',
       'sendinquest',
