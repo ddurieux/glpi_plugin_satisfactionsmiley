@@ -44,22 +44,32 @@ class PluginSatisfactionsmileyNotificationTargetTicketsatisfaction extends Notif
       if ($psConfig->fields['displayorder'] == 'goodfirst') {
          for ($i=5; $i >= 1; $i--) {
             if($psConfig->fields['is_active_'. $i]) {
+               // inline = base64
+               $smiley_img = $psConfig->fields['smiley_'.$i];
+               if ($psConfig->fields['displaytype'] == 'link') {
+                  $smiley_img = urldecode($CFG_GLPI["url_base"]."/plugins/satisfactionsmiley/pics/smiley_".$i.".png");
+               }
                $links .= "<a href='".urldecode($CFG_GLPI["url_base"].
                   "/plugins/satisfactionsmiley/front/ticketsatisfaction.answer.php?tickets_id=".$options['item']->fields['tickets_id'].
                   "&token=".$options['item']->fields['token']."&note=".$i)."' "
                   . "target='_blank'>";
-               $links .= "<img src='".$psConfig->fields['smiley_'.$i]."' alt='smiley ".$i."' />";
+               $links .= "<img src='".$smiley_img."' alt='smiley ".$i."' />";
                $links .= "</a>&nbsp;";
             }
          }
       } else {
          for ($i=1; $i <= 5; $i++) {
             if($psConfig->fields['is_active_'. $i]) {
+               // inline = base64
+               $smiley_img = $psConfig->fields['smiley_'.$i];
+               if ($psConfig->fields['displaytype'] == 'link') {
+                  $smiley_img = urldecode($CFG_GLPI["url_base"]."/plugins/satisfactionsmiley/pics/smiley_".$i.".png");
+               }
                $links .= "<a href='".urldecode($CFG_GLPI["url_base"].
                   "/plugins/satisfactionsmiley/front/ticketsatisfaction.answer.php?tickets_id=".$options['item']->fields['tickets_id'].
                   "&token=".$options['item']->fields['token']."&note=".$i)."' "
                   . "target='_blank'>";
-               $links .= "<img src='".$psConfig->fields['smiley_'.$i]."' alt='smiley ".$i."' />";
+               $links .= "<img src='".$smiley_img."' alt='smiley ".$i."' />";
                $links .= "</a>&nbsp;";
             }
          }
@@ -91,7 +101,7 @@ class PluginSatisfactionsmileyNotificationTargetTicketsatisfaction extends Notif
    }
 
 
-   function validateSendTo($event, array $infos, $notify_me = false) {
+   function validateSendTo($event, array $infos, $notify_me = false, $emitter = null) {
       return true;
    }
 

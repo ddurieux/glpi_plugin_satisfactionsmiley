@@ -27,15 +27,24 @@ class PluginSatisfactionsmileyConfig extends CommonDBTM
       $checked = '';
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>" . __('Order display in config & notification', 'satisfactionsmiley') . "</td>";
-      echo "<td>";
+      echo "<td colspan='2'>" . __('Order display in config & notification', 'satisfactionsmiley') . "</td>";
+      echo "<td colspan='2'>";
       $elements = [
          'badfirst'  => __('From bad to good', 'satisfactionsmiley'),
          'goodfirst' => __('From good to bad', 'satisfactionsmiley')
       ];
       Dropdown::showFromArray('displayorder', $elements, ['value' => $this->fields['displayorder']]);
       echo "</td>";
+      echo "</tr>";
+
+      echo "<tr class='tab_bg_1'>";
+      echo "<td colspan='2'>" . __('How to display the smiley in the notification', 'satisfactionsmiley') . "</td>";
       echo "<td colspan='2'>";
+      $elements = [
+         'inline'  => __('Integrate the image inside the mail', 'satisfactionsmiley'),
+         'link' => __('Use a link to the image to the GLPI', 'satisfactionsmiley')
+      ];
+      Dropdown::showFromArray('displaytype', $elements, ['value' => $this->fields['displaytype']]);
       echo "</td>";
       echo "</tr>";
 

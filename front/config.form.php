@@ -97,7 +97,8 @@ if (isset($_POST['check_list'])) {
       'is_active_3' => 0,
       'is_active_4' => 0,
       'is_active_5' => 0,
-      'displayorder' => $_POST['displayorder']
+      'displayorder' => $_POST['displayorder'],
+      'displaytype' => $_POST['displaytype']
    ];
    foreach ($_POST['check_list'] as $selected) {
       $input2["is_active_".$selected] = 1;
@@ -110,6 +111,14 @@ if (isset($_POST['displayorder'])) {
    $psConfig->update([
       'id' => 1,
       'displayorder' => $_POST['displayorder']
+   ]);
+   Html::back();
+}
+
+if (isset($_POST['displaytype'])) {
+   $psConfig->update([
+      'id' => 1,
+      'displaytype' => $_POST['displaytype']
    ]);
    Html::back();
 }

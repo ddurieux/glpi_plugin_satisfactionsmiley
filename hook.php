@@ -85,7 +85,7 @@ function plugin_satisfactionsmiley_install() {
          `is_active_3` tinyint(1) NOT NULL DEFAULT '1',
          `is_active_4` tinyint(1) NOT NULL DEFAULT '1',
          `is_active_5` tinyint(1) NOT NULL DEFAULT '1',
-
+         `displaytype` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'inline' COMMENT 'inline or link',
          PRIMARY KEY (`id`)
       ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
       $DB->query($query);
@@ -95,7 +95,7 @@ function plugin_satisfactionsmiley_install() {
       // Fill smiley with default
       for ($i = 1; $i <= 5; $i++) {
          $data = file_get_contents(GLPI_ROOT . "/plugins/satisfactionsmiley/pics/smiley_" . $i . ".png");
-         $base64 = 'data:image/png;base64,' . base64_encode($data);
+         $base64 = 'data:image/x-icon;base64,' . base64_encode($data);
          $DB->query("UPDATE `glpi_plugin_satisfactionsmiley_configs` SET `smiley_" . $i . "`='" . $base64 . "' WHERE `id`=1");
       }
    }
@@ -119,6 +119,11 @@ function plugin_satisfactionsmiley_install() {
    if (!$DB->fieldExists('glpi_plugin_satisfactionsmiley_configs', 'displayorder')) {
       $query = "ALTER TABLE `glpi_plugin_satisfactionsmiley_configs`
          ADD `displayorder` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'badfirst' AFTER `is_active_5` ";
+      $DB->queryOrDie($query);
+   }
+   if (!$DB->fieldExists('glpi_plugin_satisfactionsmiley_configs', 'displaytype')) {
+      $query = "ALTER TABLE `glpi_plugin_satisfactionsmiley_configs`
+         ADD `displaytype` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'inline' COMMENT 'inline or link' AFTER `displayorder` ";
       $DB->queryOrDie($query);
    }
    CronTask::Register(
