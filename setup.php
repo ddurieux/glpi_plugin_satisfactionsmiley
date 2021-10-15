@@ -1,6 +1,6 @@
 <?php
 
-define ("PLUGIN_SATISFACTIONSMILEY_VERSION", "9.4+1.1");
+define ("PLUGIN_SATISFACTIONSMILEY_VERSION", "9.5+1.0");
 
 include_once(GLPI_ROOT."/inc/includes.php");
 
@@ -53,9 +53,9 @@ function plugin_version_satisfactionsmiley() {
            'homepage'       => 'https://github.com/',
            'requirements'   => [
               'glpi' => [
-                 'min' => '9.4',
-                  'max' => '9.5',
-                  'dev' => '9.4+1.0' == 0
+                 'min' => '9.5',
+                  'max' => '9.6',
+                  'dev' => '9.5+1.0' == 0
                ],
             ]
          ];
@@ -72,8 +72,8 @@ function plugin_satisfactionsmiley_check_prerequisites() {
    global $DB;
 
    $version = rtrim(GLPI_VERSION, '-dev');
-   if (version_compare($version, '9.4', 'lt')) {
-      //echo "This plugin requires GLPI 9.4";
+   if (version_compare($version, '9.5', 'lt')) {
+      //echo "This plugin requires GLPI 9.5";
       //return false;
    }
 
@@ -81,13 +81,13 @@ function plugin_satisfactionsmiley_check_prerequisites() {
       $_SESSION['glpi_plugins'] = [];
    }
 
-   if (version_compare(GLPI_VERSION, '9.4-dev', '!=')
-      && version_compare(GLPI_VERSION, '9.4', 'lt')
-      || version_compare(GLPI_VERSION, '9.5', 'ge')) {
+   if (version_compare(GLPI_VERSION, '9.5-dev', '!=')
+      && version_compare(GLPI_VERSION, '9.5', 'lt')
+      || version_compare(GLPI_VERSION, '9.6', 'ge')) {
       if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '9.4', '9.5');
+         echo Plugin::messageIncompatible('core', '9.5', '9.6');
       } else {
-         echo __('Your GLPI version not compatible, require >= 9.4 and < 9.5', 'satisfactionsmiley');
+         echo __('Your GLPI version not compatible, require >= 9.5 and < 9.6', 'satisfactionsmiley');
       }
       return false;
    }

@@ -9,7 +9,8 @@ class PluginSatisfactionsmileyNotificationTargetTicketsatisfaction extends Notif
          $entity = $ticket->fields['entities_id'];
          parent::__construct($entity, $event, $ticket, $options);
       } else {
-         parent::__construct($entity, $event, null, $options);
+         $ticket = new Ticket();
+         parent::__construct($entity, $event, $ticket, $options);
       }
    }
 
